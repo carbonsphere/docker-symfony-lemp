@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+
+  data:
+    build: ./data/.
+   
+  php:
+    build: ./php/.
+    environment:
+      - CARBON_MYSQL_DB_HOST=dbserver
+      - CARBON_MYSQL_DB_PORT=null
+      - CARBON_APP_NAME=symfony
+      - CARBON_MYSQL_DB_USERNAME=carbon
+      - CARBON_MYSQL_DB_PASSWORD=1234567890
+
+    ports: 
+      - "9000:9000"
+    volumes_from:
+      - data
+    links:
+      - db:dbserver
+
+  db:
+    image: carbonsphere/dock-mysql
+    environment:
+      - MYSQL_PASS=1234567890
+    ports:
+      - "3307:3306" 
+ 
+  nginx:
+    build: ./nginx/.
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes_from:
+      - data
+    links:
+      - php:phpserver
+

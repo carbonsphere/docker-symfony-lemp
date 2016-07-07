@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wait-for-it.sh -t 0 phpserver:9000
+
+nginx -g "daemon off;"
