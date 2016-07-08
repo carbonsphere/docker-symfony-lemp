@@ -6,6 +6,7 @@ services:
     build: ./data/.
    
   php:
+    #build: ./php/.
     image: carbonsphere/docker-symfony-lemp-php
     environment:
       - CARBON_MYSQL_DB_HOST=dbserver
@@ -29,6 +30,7 @@ services:
       - "3307:3306" 
  
   nginx:
+    #build: ./nginx/.
     image: carbonsphere/docker-symfony-lemp-nginx
     ports:
       - "80:80"
