@@ -15,6 +15,7 @@ RUN apt-get update \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD symfony /usr/local/bin/
+ADD mysql-test.php /usr/local/bin/
 RUN chmod +x /usr/local/bin/symfony
 
 ADD php-timezone.ini /usr/local/etc/php/conf.d

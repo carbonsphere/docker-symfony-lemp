@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Wait for mysql service to be ready"
-wait-for-it.sh -t 0 dbserver:3306
-sleep 20
+
+php /usr/local/bin/mysql-test.php
 
 echo "Get Database ready"
 php bin/console doctrine:database:create --if-not-exists

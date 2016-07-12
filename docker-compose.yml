@@ -21,6 +21,8 @@ services:
       - data
     links:
       - db:dbserver
+    depends_on:
+      - db
 
   db:
     image: carbonsphere/dock-mysql
@@ -32,6 +34,7 @@ services:
   nginx:
     #build: ./nginx/.
     image: carbonsphere/docker-symfony-lemp-nginx
+    #network_mode: "host"
     ports:
       - "80:80"
       - "443:443"
