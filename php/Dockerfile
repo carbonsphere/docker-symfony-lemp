@@ -19,9 +19,7 @@ ADD mysql-test.php /usr/local/bin/
 RUN chmod +x /usr/local/bin/symfony
 
 ADD php-timezone.ini /usr/local/etc/php/conf.d
-ADD wait-for-it.sh /usr/local/bin/
 ADD symfony-pool.conf /usr/local/etc/php-fpm.d/
-RUN chmod +x /usr/local/bin/wait-for-it.sh
 
 # Remove default config file
 RUN mv /usr/local/etc/php-fpm.d/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf.bak && \
