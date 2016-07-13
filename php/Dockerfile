@@ -12,12 +12,14 @@ RUN apt-get update \
         libjpeg62-turbo-dev \
         libicu-dev \
     && docker-php-ext-install mcrypt mysql pdo_mysql intl opcache gd mysqli
+RUN apt-get install -y git-core zip unzip
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD symfony /usr/local/bin/
 ADD mysql-test.php /usr/local/bin/
 RUN chmod +x /usr/local/bin/symfony
 
+ADD php.ini /usr/local/etc/php/php.ini
 ADD php-timezone.ini /usr/local/etc/php/conf.d
 ADD symfony-pool.conf /usr/local/etc/php-fpm.d/
 
